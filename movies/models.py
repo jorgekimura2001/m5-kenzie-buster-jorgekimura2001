@@ -18,7 +18,6 @@ class Movie(models.Model):
         default=MovieRating.GENERAL,
     )
     synopsis = models.TextField(null=True)
-    added_by = models.EmailField(null=True)
 
     user = models.ForeignKey(
         'users.User',

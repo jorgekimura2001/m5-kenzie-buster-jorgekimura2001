@@ -20,12 +20,12 @@ class MovieSerializer(serializers.Serializer):
         allow_null=True,
         required=False,
     )
-    added_by = serializers.EmailField(read_only=True)
+    added_by = serializers.SerializerMethodField(read_only=True)
+
+    def get_added_by(self, obj):
+        return obj.user.email
 
     def create(self, validated_data: dict):
-        user: User = validated_data.pop('user')
-        validated_data['added_by'] = user.email
         return Movie.objects.create(
             **validated_data,
-            user=user,
         )
