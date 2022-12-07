@@ -46,7 +46,6 @@ THIRD_PARTY_APPS = [
 MY_APPS = [
     "users",
     "movies",
-    "moviesorders"
 ]
 
 
